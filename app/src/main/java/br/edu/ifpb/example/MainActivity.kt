@@ -2,9 +2,9 @@ package br.edu.ifpb.example
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifpb.example.databinding.ActivityMainBinding
 import br.edu.ifpb.example.ui.SecondActivity
 
