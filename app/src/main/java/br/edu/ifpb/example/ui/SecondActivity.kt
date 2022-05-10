@@ -13,12 +13,6 @@ class SecondActivity : AppCompatActivity() {
 
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val email = intent.extras?.getString(EXTRA_EMAIL)
-        binding.title.text = email
-
-        val password = intent.extras?.getString(EXTRA_PASSWORD)
-        binding.description.text = password
     }
 
     companion object {
