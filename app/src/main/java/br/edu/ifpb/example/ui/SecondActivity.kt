@@ -1,10 +1,11 @@
 package br.edu.ifpb.example.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.ifpb.example.databinding.ActivitySecondBinding
+import br.edu.ifpb.example.ui.NameAdapter.ItemClickListener
 
 class SecondActivity : AppCompatActivity() {
 
@@ -42,10 +43,16 @@ class SecondActivity : AppCompatActivity() {
     }
 
     private fun setupAdapter() {
-        val adapter = NameAdapter(names)
+        val adapter = NameAdapter(
+            names,
+            object : ItemClickListener {
+                override fun onClick(name: String) {
+                    Toast.makeText(this@SecondActivity, name, Toast.LENGTH_LONG).show()
+                }
+            }
+        )
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-//        binding.recyclerView.layoutManager = GridLayoutManager(this, 5)
     }
 
     companion object {
