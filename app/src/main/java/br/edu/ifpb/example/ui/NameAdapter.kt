@@ -5,10 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.ifpb.example.R
+import br.edu.ifpb.example.data.Student
 import br.edu.ifpb.example.databinding.ItemViewBinding
 
 class NameAdapter(
-    private val data: List<String>,
+    private val data: Array<Student>,
     private val itemClickListener: ItemClickListener,
 ) : RecyclerView.Adapter<NameAdapter.ViewHolder>() {
 
@@ -20,34 +21,35 @@ class NameAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(data[position])
+        holder.bind(data.get(position))
     }
 
     override fun getItemCount(): Int = data.size
 
-    class ViewHolder(
+    inner class ViewHolder(
         view: View,
         onClickListener: ItemClickListener
     ) : RecyclerView.ViewHolder(view) {
 
         private val viewBinding = ItemViewBinding.bind(view)
-        private var name: String? = null
+        private var student: Student? = null
 
         init {
             viewBinding.root.setOnClickListener {
-                name?.let {
-                    onClickListener.onClick(it)
+                student?.let { student ->
+                    onClickListener.onClick(student)
                 }
             }
         }
 
-        fun bind(name: String) {
-            this.name = name
-            viewBinding.name.text = name
+        fun bind(student: Student) {
+            this.student = student
+            viewBinding.name.text = student.name
+            viewBinding.email.text = student.email
         }
     }
 
     interface ItemClickListener {
-        fun onClick(name: String)
+        fun onClick(student: Student)
     }
 }

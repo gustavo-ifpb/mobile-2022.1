@@ -4,30 +4,19 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import br.edu.ifpb.example.data.Student
 import br.edu.ifpb.example.databinding.ActivitySecondBinding
 import br.edu.ifpb.example.ui.NameAdapter.ItemClickListener
 
 class SecondActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySecondBinding
-    private val names = listOf(
-        "Gustavo Vieira",
-        "Cleonice dos Santos Barbosa Soares",
-        "Daniel Cordeiro da Costa",
-        "Joyce da Silva Pinheiro",
-        "Gustavo Vieira",
-        "Cleonice dos Santos Barbosa Soares",
-        "Daniel Cordeiro da Costa",
-        "Joyce da Silva Pinheiro",
-        "Gustavo Vieira",
-        "Cleonice dos Santos Barbosa Soares",
-        "Daniel Cordeiro da Costa",
-        "Joyce da Silva Pinheiro",
-        "Gustavo Vieira",
-        "Cleonice dos Santos Barbosa Soares",
-        "Daniel Cordeiro da Costa",
-        "Joyce da Silva Pinheiro",
-        "Thiágo Silva de Morais",
+    private val students = arrayOf(
+        Student("Gustavo Vieira", "gustavo.vieira@ifpb.edu.br"),
+        Student("Cleonice dos Santos", "soares.cleonice@academico.ifpb.edu.br"),
+        Student("Daniel Cordeiro", "daniel.cordeiro@academico.ifpb.edu.br"),
+        Student("Joyce da Silva", "pinheiro.joyce@academico.ifpb.edu.br"),
+        Student("Thiágo Silva", "thiago.morais@academico.ifpb.edu.br"),
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,10 +33,10 @@ class SecondActivity : AppCompatActivity() {
 
     private fun setupAdapter() {
         val adapter = NameAdapter(
-            names,
+            students,
             object : ItemClickListener {
-                override fun onClick(name: String) {
-                    Toast.makeText(this@SecondActivity, name, Toast.LENGTH_LONG).show()
+                override fun onClick(student: Student) {
+                    Toast.makeText(this@SecondActivity, student.name, Toast.LENGTH_LONG).show()
                 }
             }
         )
